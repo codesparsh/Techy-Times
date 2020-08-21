@@ -1,0 +1,26 @@
+<br>
+<app-admin-add-category></app-admin-add-category>
+<br>
+<div class="container">
+    <div class="row offset-3">
+        <div class="col-6">
+            <h2>Categories</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let category of Categories; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td><img src="{{ category.photoUrl }}" style="height: 15vh;width: 25vh;" class="fluid" alt=""></td>
+                    <td>{{ category.name }}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

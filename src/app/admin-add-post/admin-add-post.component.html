@@ -1,0 +1,74 @@
+<form #userForm='ngForm' autocomplete="off">
+    <!-- One "tab" for each step in the form: -->
+    <div class="col-8 offset-2">
+        <div class="form-group">
+            <h1>Blog Post:</h1>
+        </div>
+
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" name="title" [(ngModel)]="title">
+        </div>
+
+        <div class="form-group">
+            <label>Author</label>
+            <input type="text" class="form-control" name="author" [(ngModel)]="author">
+        </div>
+
+        <div class="form-group">
+            <label>Tags</label>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group" id="tags">
+                        <input type="text" class="form-control" name="tag" id="tag" [(ngModel)]="singleTag">
+                        <ul>
+                            <li *ngFor="let tag of tags">
+                                {{tag}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-outline-primary" (click)="addInput()">Add Tag</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Cover Img</label>
+            <div class="row">
+                <div class="col-6">
+                    <input type="file" accept="image/*" class="form-control" name="cover"
+                        (change)="selectImage($event)">
+                    <small id="upload-message"></small>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn btn-outline-primary" (click)="uploadImage()">Upload Image</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            <select class="form-control" name="category" id="" [(ngModel)]="category" required>
+                <option>Select</option>
+                <option *ngFor="let category of categories">{{ category.name }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" name="description" id="" cols="30" rows="5" [(ngModel)]="description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <textarea class="editor" id="tinymceEditor" id="" cols="30" rows="50"></textarea>
+            <input name="image" type="file" id="upload" hidden onchange="">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" (click)="postAdminBlogs()">Submit</button>
+        </div>
+    </div>
+
+</form>
